@@ -1,11 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<title>Vertical Password Toggler</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to bottom, #667eea, #764ba2);
+    font-family: Arial, sans-serif;
+  }
+
+  /* Full vertical container */
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertical center */
+    align-items: center;
+  }
+
+  .card {
+    background: white;
+    width: 90%;
+    max-width: 350px;
+    padding: 30px 25px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* vertical spacing */
+    text-align: center;
+  }
+
+  h2 {
+    margin: 0;
+    color: #333;
+  }
+
+  .input-box {
+    position: relative;
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+    padding: 14px 45px 14px 15px;
+    font-size: 16px;
+    border-radius: 30px;
+    border: 2px solid #ddd;
+    outline: none;
+  }
+
+  input:focus {
+    border-color: #667eea;
+  }
+
+  .toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  button {
+    padding: 14px;
+    border: none;
+    border-radius: 30px;
+    background: #301CA0;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background: #C47BE4;
+  }
+
+  .info {
+    font-size: 14px;
+    color: gray;
+  }
+</style>
 </head>
+
 <body>
-    
+
+<div class="container">
+  <div class="card">
+    <h2>Password Toggler</h2>
+
+    <div class="input-box">
+      <input type="password" id="password" placeholder="Enter password">
+      <span class="toggle" onclick="togglePassword()">👁️</span>
+    </div>
+
+    <button>Login</button>
+
+    <div class="info">
+      Tap the eye icon to show or hide password
+    </div>
+  </div>
+</div>
+
+<script>
+  function togglePassword() {
+    const pass = document.getElementById("password");
+    const icon = document.querySelector(".toggle");
+
+    if (pass.type === "password") {
+      pass.type = "text";
+      icon.textContent = "🙈";
+    } else {
+      pass.type = "password";
+      icon.textContent = "👁️";
+    }
+  }
+</script>
+
 </body>
 </html>
